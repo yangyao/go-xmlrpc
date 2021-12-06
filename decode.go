@@ -139,7 +139,9 @@ func (d *StdDecoder) decodeValue(value *ResponseValue, field reflect.Value) erro
 			f := field.FieldByName(fName)
 
 			if !f.IsValid() {
-				return fmt.Errorf("cannot find field '%s' on struct", fName)
+				// just continue 
+				continue
+				//return fmt.Errorf("cannot find field '%s' on struct", fName)
 			}
 
 			if err := d.decodeValue(&m.Value, f); err != nil {
